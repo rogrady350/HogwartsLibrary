@@ -1,0 +1,55 @@
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 4rem;   /*rm: root em - adjusts font size reltive to root element font size*/
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: purple;
+}
+
+h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem;   /*rm: root em - adjusts font size reltive to root element font size*/
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: Purple;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table-container {
+    width: 70%;
+    margin: 0 auto; /*center table-container*/
+    display: flex;
+    justify-content: center;
+}
+table {
+    background-color: rgba(255, 255, 255, 0.9); /*slight transparency*/
+    width: 100%;
+    border-collapse: collapse;                    /*merge borders*/
+}
+
+tbody tr {
+    background-color: lightgrey;
+}
+thead th, .counter-spell {
+    background-color: purple;
+    color: whitesmoke;
+}
+
+.table th, .table td{
+    padding: 15px 25px;
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid #ccc; /*Add borders between rows*/
+}
+
+
+
+td {
+    font-size: 20px;
+}
