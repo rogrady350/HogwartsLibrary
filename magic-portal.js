@@ -7,7 +7,7 @@ function getSpells() {
         success: function(response) {
             data = JSON.parse(response);
             showTable(data.spells); // Pass spells array to showTable
-            
+            console.log(data.msg)
         },
         error: function(response) {
             data = JSON.parse(response);
@@ -35,84 +35,111 @@ function showTable(spellsTable) {
 
 getSpells();   //populate table on load
 
-
-//add new spells to library 
-function addSpell() {
+//additional unimplemented function templates
+/*add new spells to library
+  send JSON object spell in form {
+    name: "spell name", type: "spell type", 
+    effect: "spell effect", counter: "counter spell"}*/
+function addSpell(spell) {
     $.ajax({
         url: portalUrl + "/add-spells",
         type: "post",
-        data: JSON.stringify(),
+        data: JSON.stringify({
+            name: spell.name, 
+            type: spell.type, 
+            effect: spell.effect, 
+            counter: spell.counter
+        }),
         success: function(response) {
-            data = JSON.parse(response.msg);
-            
+            data = JSON.parse(response);
+            console.log(data.msg);
         },
         error: function(response) {
-            response = JSON.parse(response);
+            data = JSON.parse(response);
             console.error(response.msg);
          }
     });
 }
 
-function getSpellsByType() {
+/*show table with only desired spell type
+  send type in a JSON object in the form {type: "type"}*/
+function getSpellsByType(type) {
     $.ajax({
-        url: portalUrl + "/add-spells",
-        type: "post",
+        url: portalUrl + "/get-spellsByType",
+        type: "get",
+        data: {type},
         success: function(response) {
-            response = JSON.parse(response);
-            showTable(response.spells); // Pass spells array to showTable
-            
+            data = JSON.parse(response);
+            console.log(data.msg)            
         },
         error: function(response) {
-            response = JSON.parse(response);
-            console.error(response.msg);
+            data = JSON.parse(response);
+            console.error(data.msg);
          }
     });
 }
 
-function deleteSpell() {
+/*remove spell from library
+  send data in a JSON object in the form {type: "type"}
+  link to delete button for spell row*/
+function deleteSpell(type) {
     $.ajax({
-        url: portalUrl + "/add-spells",
-        type: "post",
+        url: portalUrl + "/delete-spell",
+        type: "delete",
+        data: type,
         success: function(response) {
-            response = JSON.parse(response);
-            showTable(response.spells); // Pass spells array to showTable
-            
+            data = JSON.parse(response);
+            console.log(data.msg);
         },
         error: function(response) {
-            response = JSON.parse(response);
-            console.error(response.msg);
+            data = JSON.parse(response);
+            console.error(data.msg);
          }
     });
 }
 
+/*update existing spell
+send data in a JSON object in the form:{
+ID: "spell Mongo Id", name: "spell name", 
+type: "spell type", effect: "spell effect", 
+counter: "counter spell"}
+link to edit button for spell row*/
 function updateSpell() {
     $.ajax({
-        url: portalUrl + "/add-spells",
-        type: "post",
+        url: portalUrl + "/update-spells" + spell.id,
+        type: "put",
+        data: JSON.stringify({
+            id: spell.id,
+            name: spell.name, 
+            type: spell.type, 
+            effect: spell.effect, 
+            counter: spell.counter
+        }),
         success: function(response) {
-            response = JSON.parse(response);
-            showTable(response.spells); // Pass spells array to showTable
-            
+            data = JSON.parse(response);
+            console.log(data.msg)
         },
         error: function(response) {
-            response = JSON.parse(response);
-            console.error(response.msg);
+            data = JSON.parse(response);
+            console.error(data.msg);
          }
     });
 }
 
+/*get the magical spell for the day
+Returns a JSON string in the form - {msg: "SUCCESS", spell: "the spell string"}*/
 function spellOfTheDay() {
     $.ajax({
-        url: portalUrl + "/add-spells",
-        type: "post",
+        url: portalUrl + "/spelloftheday",
+        type: "get",
         success: function(response) {
-            response = JSON.parse(response);
-            showTable(response.spells); // Pass spells array to showTable
-            
+            data = JSON.parse(response);
+            stringOfDay = data.spell
+            console.log(data.msg)
         },
         error: function(response) {
-            response = JSON.parse(response);
-            console.error(response.msg);
+            data = JSON.parse(response);
+            console.error(data.msg);
          }
     });
 }
