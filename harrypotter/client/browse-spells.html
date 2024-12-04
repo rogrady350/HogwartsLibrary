@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Browse Spells
+        </title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="./js/config.js"></script>
+        <script src='./js/browse-spells.js'></script>
+    </head>
+  
+    <body data-ng-app="browseSpellsApp" data-ng-controller="browseSpellsCtrl">
+        <div style="font-size: 30px;">
+            <div>
+              <label for="name">Spell Name:</label>
+              <label style="margin-left: 30px; color:blue" id="name">{{ obj.name }}</label>
+            </div>
+      
+            <div>
+              <label for="type">Spell Type:</label>
+              <label style="margin-left: 30px; color:blue" id="type">{{ obj.type }}</label>
+            </div>
+      
+            <div>
+              <label for="effect">Spell Effect:</label>
+              <label style="margin-left: 30px; color:blue" id="effect">{{ obj.effect }}</label>
+            </div>
+      
+            <div>
+              <label for="counter-spell">Counter Spell:</label>
+              <label style="margin-left: 30px; color:blue"  id="counter-spell">{{ obj['counter-spell'] }}</label>
+            </div>
+      
+            <div style="float: left; margin-top: 30px">
+              <div style="float: left;">
+                <button id="previous" data-ng-click="changeSpell(-1)" data-ng-hide="hidePrev">&lt&lt&lt Previous;</button>
+              </div>
+
+              <div style="float: left;">
+                <button id="next" data-ng-click="changeSpell(1)" data-ng-hide="hideNext">Next &gt&gt&gt;</button>
+              </div>
+            </div>
+          </div>
+    </body>
+</html>

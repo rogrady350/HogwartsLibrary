@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add Spell</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/add-spell.js"></script>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+    </style>  
+  </head>
+
+  <body data-ng-app="addSpellsApp" data-ng-controller="addSpellsCtrl">
+    <div style="font-size: 30px;">
+      <div>
+        <label for="name">Spell Name:</label>
+        <input type="text" id="name" data-ng-model="name">
+      </div>
+
+      <div>
+        <label for="type">Spell Type:</label>
+        <input type="text" id="type" data-ng-model="type">
+      </div>
+
+      <div>
+        <label for="effect">Spell Effect:</label>
+        <input type="text" id="effect" data-ng-model="effect">
+      </div>
+
+      <div>
+        <label for="counter-spell">Counter Spell:</label>
+        <input type="text" id="counter-spell" data-ng-model="counter">
+      </div>
+
+      <div style="float: left; margin-top: 30px">
+        <div style="margin-left: 30px;">
+          <button id="submit" data-ng-click="submitSpell()">Submit</button>
+        </div>
+      </div>
+
+      <div style="float: left; clear: left; margin-top: 20px; font-size: 24px; color: green">
+        {{addResults}}
+      </div>
+    </div>
+  </body>
+
+</html>
