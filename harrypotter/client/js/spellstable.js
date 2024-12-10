@@ -3,6 +3,7 @@ var app = angular.module("tableApp", []);
 app.controller("tableCtrl", function($scope, $http){
     $scope.spells = [];
 
+    //GET - function to retrieve spells
     $scope.get_records = function(){
         $http({
             method: 'get',
@@ -20,6 +21,7 @@ app.controller("tableCtrl", function($scope, $http){
         }
     }; //End of get records function
 
+    //execute on page load
     $scope.get_records();
 
     $scope.redrawTable = function() {
@@ -56,6 +58,7 @@ app.controller("tableCtrl", function($scope, $http){
         $scope.hideForm = true;
     }
 
+    //PUT - update a spell
     $scope.updateSpell = function() {
         if($scope.name === "" || $scope.type === "" || $scope.effect === "") {
             $scope.addResults = "Name, type, add effect are required";
@@ -87,8 +90,9 @@ app.controller("tableCtrl", function($scope, $http){
         }), function(error) {
             console.log(error);
         }
-    }
+    } //end of update spell function
 
+    //DELETE - delete a spell
     $scope.deleteSpell = function(spellName) {
         console.log(spellName);
 
@@ -106,7 +110,7 @@ app.controller("tableCtrl", function($scope, $http){
         }), function(error){
             console.log(error);
         }
-    }
+    } //end of delete function
 }); //End of controller
 
 function getTypes(spellTableData) {

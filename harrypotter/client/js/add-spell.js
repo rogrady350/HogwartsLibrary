@@ -1,5 +1,6 @@
 var app = angular.module("addSpellsApp", []);
 
+//POST - function to add spells
 app.controller("addSpellsCtrl", function($scope, $http){
     $scope.submitSpell = function(){
         //make sure user does not submit blank form
