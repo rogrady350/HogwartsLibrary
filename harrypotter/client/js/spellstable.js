@@ -93,13 +93,13 @@ app.controller("tableCtrl", function($scope, $http){
     } //end of update spell function
 
     //DELETE - delete a spell
-    $scope.deleteSpell = function(spellName) {
-        console.log(spellName);
+    $scope.deleteSpell = function(id) {
+        console.log(id);
 
         $http({
             method: 'delete',
             url: potterURL + "/delete-spell",
-            params: {name: spellName}
+            params: {spellID: id}
 
         }).then(function(response){
             if(response.data.msg == "SUCCESS") {
